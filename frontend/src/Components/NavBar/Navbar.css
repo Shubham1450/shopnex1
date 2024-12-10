@@ -41,6 +41,10 @@
     gap: 3px;
     cursor: pointer;
 }
+.nav-menu li:hover {
+    transform: scale(2.1); /* Slightly zoom in */
+    color: #333; /* Optional: Change color on hover */
+  }
 
 .nav-menu hr{
     border: none;
