@@ -9,6 +9,8 @@ const path = require("path");
 const cors = require('cors');
 const { type } = require('os');
 const { error } = require('console');
+const validator = require("email-validator");
+// const popup = require("popups");
 
 app.use(express.json());
 app.use(cors());
@@ -161,16 +163,20 @@ app.post('/signup', async (req, res) => {
         password: req.body.password,
         cartData: cart,
     })
-    await user.save();
-
-    const data = {
-        user: {
-            id: user.id
+    if (validator.validate(user.email)) {
+        await user.save();
+        const data = {
+            user: {
+                id: user.id
+            }
         }
+        const token = jwt.sign(data, 'secret_ecom');
+        res.json({ success: true, token })
+    } else {
+        return res.status(400).json({ success: false, error: "Wrong E-mail Format" })
     }
 
-    const token = jwt.sign(data, 'secret_ecom');
-    res.json({ success: true, token })
+
 })
 
 //creeating endpoint for user login
