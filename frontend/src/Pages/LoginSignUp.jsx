@@ -60,7 +60,7 @@ const LoginSignUp = () => {
             <div className="loginsignup-container">
                 <h1>{state}</h1>
                 <div className="loginsignup-fields">
-                    {state === "Sign Up" ? <input name='username' value={formData.username} onChange={changeHandler} type="text" placeholder='Your Name' /> : <></>}
+                    {state === "Sign Up" ? <input name='username' value={formData.username} onChange={changeHandler} type="text" placeholder='Username' /> : <></>}
                     <input type="email" name="email" value={formData.email} onChange={changeHandler} id="" placeholder='Email' />
                     <input type="password" name="password" value={formData.password} onChange={changeHandler} placeholder='Password' />
                 </div>
